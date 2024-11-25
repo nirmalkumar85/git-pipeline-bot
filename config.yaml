@@ -1,0 +1,7 @@
+owner: your-github-username
+repo: your-repo
+branch: your-fork-branch
+title: "New Probe CRD Spec"
+body: "This is an automated pull request to update probe CRD spec."
+interval: 5
+github_token: "your-personal-access-token"

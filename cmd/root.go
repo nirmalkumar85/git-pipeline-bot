@@ -3,12 +3,12 @@ package cmd
 import (
 	"time"
 
-	"github.com/spf13/cobra"
+	"github.com/nirmalkumar85/git-pipeline-bot/github"
+	"github.com/nirmalkumar85/git-pipeline-bot/template"
+	"github.com/nirmalkumar85/git-pipeline-bot/utils"
 	"github.com/rs/zerolog"
+	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"github.com/yourusername/pullrequest-cli/github"
-	"github.com/yourusername/pullrequest-cli/template"
-	"github.com/yourusername/pullrequest-cli/utils"
 )
 
 // NewCreatePullRequestCmd creates the command for periodic pull request creation

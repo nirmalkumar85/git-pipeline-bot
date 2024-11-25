@@ -18,7 +18,7 @@ func TestRunPeriodicTask(t *testing.T) {
 	}
 
 	// Run the task every 100ms (to speed up the test)
-	RunPeriodicTask(task, 100*time.Millisecond, logger)
+	RunPeriodicTask(task, 100*time.Millisecond, &logger)
 
 	// Give it some time to run
 	time.Sleep(350 * time.Millisecond)

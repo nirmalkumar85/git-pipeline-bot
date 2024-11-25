@@ -2,15 +2,11 @@ package main
 
 import (
 	"os"
-	"time"
 
+	"github.com/nirmalkumar85/git-pipeline-bot/cmd"
+	"github.com/rs/zerolog"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"github.com/rs/zerolog"
-	"github.com/yourusername/pullrequest-cli/cmd"
-	"github.com/yourusername/pullrequest-cli/github"
-	"github.com/yourusername/pullrequest-cli/template"
-	"github.com/yourusername/pullrequest-cli/utils"
 )
 
 func main() {
@@ -29,7 +25,7 @@ func main() {
 	}
 
 	// Add the command for creating pull requests
-	rootCmd.AddCommand(cmd.NewCreatePullRequestCmd(logger))
+	rootCmd.AddCommand(cmd.NewCreatePullRequestCmd(&logger))
 
 	// Execute the command
 	if err := rootCmd.Execute(); err != nil {

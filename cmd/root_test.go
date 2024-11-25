@@ -2,8 +2,8 @@ package cmd
 
 import (
 	"testing"
+
 	"github.com/spf13/viper"
-	"github.com/spf13/cobra"
 	"github.com/stretchr/testify/assert"
 )
 

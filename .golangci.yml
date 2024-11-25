@@ -1,0 +1,74 @@
+# .golangci.yml
+linters:
+  enable:
+    - errcheck        # Check for unchecked errors
+    - govet           # Report possible mistakes in Go programs
+    - gocritic        # Perform various static checks
+    - golint          # Lint Go source code
+    - staticcheck     # A go vet on steroids
+    - unused          # Check for unused variables, imports, functions, etc.
+    - dupl            # Check for duplicate code
+    - misspell        # Check for misspelled words in comments, strings, etc.
+    - unconvert       # Check for unnecessary type conversions
+    - bodyclose       # Check if the body of a function has close statements for opened resources
+    - typecheck       # Check that types are used correctly
+    - stylecheck      # Check for Go code style issues
+
+run:
+  # Run linters on these Go versions
+  go:
+    - 1.20
+    - 1.19
+    - 1.18
+
+  # Run linters on files in these directories
+  include:
+    - "cmd/**/*"
+    - "pkg/**/*"
+    - "internal/**/*"
+    - "cmd/**/*.go"
+    - "pkg/**/*.go"
+    - "internal/**/*.go"
+  
+  # Run linters only on files that are modified in the commit (optional)
+  run-on-modified: true
+
+# Disable linters you don’t need
+linters-settings:
+  govet:
+    check-shadowing: true
+  gocritic:
+    enabled-checks: "all"
+  misspell:
+    locale: "en_US" # Choose the locale for misspelling checks (can be 'en_US', 'en_GB', etc.)
+
+# Output format (can be 'text', 'json', 'sarif', 'checkstyle', 'github-actions', etc.)
+output:
+  format: github-actions
+
+# Enable complexity limits for functions (optional)
+complexity:
+  max-complexity: 15 # Functions with a complexity higher than 15 will be flagged
+
+# Enable setting for linting ignored files (optional)
+exclude-rules:
+  - path: _test\.go    # Ignore test files
+    linters:
+      - dupl           # Don't run dupl linter on test files
+  - path: vendor/*
+    linters:
+      - govet
+      - gocritic
+
+# Enable auto-fix for linters that support it
+fix:
+  enable: true
+
+# Skip linters for certain directories or files
+skip-dirs:
+  - vendor
+  - third_party
+
+# Enable or disable specific linters
+disable:
+  - golint        # Optional: Turn off 'golint' if you prefer 'gocritic' or 'staticcheck' over 'golint'
